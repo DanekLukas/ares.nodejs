@@ -1,0 +1,60 @@
+{
+  "gql:mutation": {
+    "scope": "typescript",
+    "prefix": "gql:mutation",
+    "body": [
+      "import { mutationWithClientMutationId } from 'graphql-relay'",
+      "import { authMutation } from '../../../../../auth/checkPermissions'",
+      "",
+      "type InputFields = {}",
+      "",
+      "const $1 = mutationWithClientMutationId({",
+      "  name: '$2',",
+      "  inputFields: {},",
+      "  outputFields: {},",
+      "  mutateAndGetPayload: authMutation({ allowUserType: [$3] })(async ({}: InputFields) => {",
+      "    $0",
+      "  })",
+      "})",
+      "",
+      "export default $1"
+    ],
+    "description": "Create body for GraphQL mutation"
+  },
+  "gql:query": {
+    "scope": "typescript",
+    "prefix": "gql:query",
+    "body": [
+      "import { CtxReq } from '../../types/CtxReq'",
+      "",
+      "export default {",
+      "  $1: {",
+      "    type: $2",
+      "    args: {}",
+      "    description: `$3`",
+      "    resolve: async (_, args, { req: { user } }: CtxReq) => {",
+      "       $0",
+      "    }",
+      "  },",
+      "}"
+    ],
+    "description": "Create body for GraphQL queries"
+  },
+  "gql:type": {
+    "scope": "typescript",
+    "prefix": "gql:type",
+    "body": [
+      "import { GraphQLObjectType } from 'graphql'",
+      "",
+      "export const typeName = '$1'",
+      "const $1Type = new GraphQLObjectType({",
+      "  name: typeName,",
+      "  fields: () => ({$0}),",
+      "})",
+      "",
+      "export default $1Type",
+      ""
+    ],
+    "description": "Create GraphQL type"
+  }
+}
