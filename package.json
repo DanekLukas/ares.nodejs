@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "ts-node index.ts",
-    "build": "tsc",
+    "build-original": "tsc",
+    "build": "esbuild src/index.ts --bundle --platform=node --outfile=./dist/index.cjs",
     "l": "yarn lint:fix",
     "lint": "eslint \"{src,fixtures,scripts,tests}/**/*.{js,ts}\" --cache",
     "lint:fix": "yarn lint --fix"

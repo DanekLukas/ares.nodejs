@@ -32,9 +32,7 @@ const credentials = privateKey && certificate ? { key: privateKey!, cert: certif
 const sb = getBase()
 if (!sb) exit(1)
 
-getDirectories(staticFldr).forEach(fldr => {
-  app.use('/' + fldr, express.static(`${staticFldr}/${fldr}`))
-})
+app.use('/assets', express.static(`${staticFldr}/assets`))
 
 app.set('protocol', protocol)
 app.set('port', port)
